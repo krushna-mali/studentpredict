@@ -1,0 +1,101 @@
+Student_ID,Name,Attendance_Percentage,Engineering_Maths_3_Marks,Microprocessor_Marks,Principles_of_Programming_Language_Marks,Software_Engineering_Marks,Data_Structure_and_Algorithm_Marks,Total_Marks,Percentage,Performance
+S001,Siya Patel,93,89,74,82,95,92,432,86.4,Excellent
+S002,Ishaan Nair,83,80,68,79,64,72,363,72.6,Very Good
+S003,Myra Sinha,69,70,63,85,55,65,338,67.6,Good
+S004,Anika Chatterjee,97,85,87,85,71,78,406,81.2,Excellent
+S005,Ritvik Iyer,62,65,59,75,43,47,289,57.8,Average
+S006,Arjun Bose,75,70,73,63,63,61,330,66.0,Good
+S007,Zara Agarwal,93,78,79,81,95,62,395,79.0,Very Good
+S008,Siddharth Bhatia,73,78,68,60,47,75,328,65.6,Good
+S009,Vihaan Nair,77,66,79,62,77,47,331,66.2,Good
+S010,Aarohi Anand,65,53,50,58,68,81,310,62.0,Good
+S011,Aisha Bansal,65,73,62,58,66,43,302,60.4,Good
+S012,Aditya Bhatia,78,82,71,64,77,85,379,75.8,Very Good
+S013,Saanvi Shah,90,62,87,73,67,69,358,71.6,Very Good
+S014,Aditya Mehta,94,87,79,92,88,86,432,86.4,Excellent
+S015,Saisha Kapoor,78,49,76,91,64,62,342,68.4,Good
+S016,Anika Chopra,57,66,66,50,30,72,284,56.8,Average
+S017,Navya Chatterjee,76,59,50,65,69,69,312,62.4,Good
+S018,Diya Chopra,56,62,66,59,46,65,298,59.6,Average
+S019,Aadhya Patel,78,63,60,100,83,70,376,75.2,Very Good
+S020,Aarohi Gupta,98,87,73,84,81,87,412,82.4,Excellent
+S021,Vihaan Patil,84,60,45,84,74,80,343,68.6,Good
+S022,Kabir Bose,92,77,71,95,83,74,400,80.0,Excellent
+S023,Meera Trivedi,56,54,54,58,52,41,259,51.8,Average
+S024,Arjun Varma,75,77,64,77,66,54,338,67.6,Good
+S025,Sara Chopra,87,94,71,82,84,76,407,81.4,Excellent
+S026,Navya Sengupta,66,67,50,72,51,56,296,59.2,Average
+S027,Aarohi Mukherjee,76,71,77,58,61,47,314,62.8,Good
+S028,Kabir Jain,98,73,93,86,74,89,415,83.0,Excellent
+S029,Advait Singh,79,56,74,75,85,58,348,69.6,Good
+S030,Saisha Sinha,81,74,53,76,65,60,328,65.6,Good
+S031,Trisha Sinha,96,84,100,94,81,82,441,88.2,Excellent
+S032,Aditya Yadav,82,78,74,77,66,63,358,71.6,Very Good
+S033,Kayaan Singh,70,71,69,53,61,65,319,63.8,Good
+S034,Ayaan Sharma,69,67,48,69,56,83,323,64.6,Good
+S035,Aarohi Bhatia,98,69,83,75,88,80,395,79.0,Very Good
+S036,Diya Varma,57,64,59,48,44,44,259,51.8,Average
+S037,Aarohi Sengupta,91,78,77,75,65,81,376,75.2,Very Good
+S038,Amyra Dubey,61,48,66,57,52,50,273,54.6,Average
+S039,Aarush Nair,75,63,81,52,60,68,324,64.8,Good
+S040,Veer Patil,63,45,46,70,46,62,269,53.8,Average
+S041,Meera Dubey,93,77,89,69,77,80,392,78.4,Very Good
+S042,Riya Verma,72,73,69,81,49,66,338,67.6,Good
+S043,Dhruv Bose,58,52,56,44,73,58,283,56.6,Average
+S044,Arjun Joshi,79,62,55,83,55,86,341,68.2,Good
+S045,Aarush Shah,68,60,77,62,56,60,315,63.0,Good
+S046,Darsh Mehta,63,64,63,42,55,60,284,56.8,Average
+S047,Krishna Bhatia,80,58,53,61,88,80,340,68.0,Good
+S048,Ritvik Mehta,56,44,52,67,37,59,259,51.8,Average
+S049,Navya Singh,74,68,70,71,68,63,340,68.0,Good
+S050,Trisha Varma,82,60,77,72,83,81,373,74.6,Very Good
+S051,Kiara Mittal,61,77,56,36,55,49,273,54.6,Average
+S052,Meera Singh,98,82,87,97,72,81,419,83.8,Excellent
+S053,Pranav Malhotra,62,49,80,77,57,51,314,62.8,Good
+S054,Pari Singh,89,69,93,94,93,83,432,86.4,Excellent
+S055,Ayaan Dubey,68,58,53,56,56,74,297,59.4,Average
+S056,Aisha Datta,71,59,59,69,79,67,333,66.6,Good
+S057,Zara Trivedi,90,57,77,83,81,79,377,75.4,Very Good
+S058,Atharva Bhatia,94,93,63,66,93,72,387,77.4,Very Good
+S059,Dhruv Chatterjee,58,55,42,57,58,49,261,52.2,Average
+S060,Pari Reddy,56,54,38,65,49,42,248,49.6,Below Average
+S061,Siya Yadav,60,65,46,65,73,35,284,56.8,Average
+S062,Saisha Nair,96,72,96,71,84,78,401,80.2,Excellent
+S063,Ritvik Das,58,48,47,47,57,53,252,50.4,Average
+S064,Pranav Jain,83,78,63,81,81,95,398,79.6,Very Good
+S065,Siya Jain,72,65,74,72,75,81,367,73.4,Very Good
+S066,Anika Datta,80,74,67,48,79,77,345,69.0,Good
+S067,Ritvik Shah,98,83,88,59,70,100,400,80.0,Excellent
+S068,Samar Desai,88,74,69,76,70,91,380,76.0,Very Good
+S069,Ahana Malhotra,64,74,42,54,53,40,263,52.6,Average
+S070,Amyra Sengupta,90,89,83,75,70,89,406,81.2,Excellent
+S071,Shreyash Yadav,68,38,47,58,54,70,267,53.4,Average
+S072,Saisha Mehta,85,89,69,84,68,72,382,76.4,Very Good
+S073,Saanvi Yadav,69,85,56,64,67,49,321,64.2,Good
+S074,Shreyash Sharma,62,71,60,61,63,64,319,63.8,Good
+S075,Riya Iyer,68,60,57,49,63,42,271,54.2,Average
+S076,Aisha Yadav,77,62,68,35,65,69,299,59.8,Average
+S077,Kabir Verma,94,88,65,92,94,75,414,82.8,Excellent
+S078,Riya Mukherjee,75,61,88,89,67,55,360,72.0,Very Good
+S079,Samar Nair,70,68,52,61,73,76,330,66.0,Good
+S080,Vivaan Varma,99,84,96,87,79,84,430,86.0,Excellent
+S081,Dhruv Trivedi,72,78,67,69,70,67,351,70.2,Very Good
+S082,Advait Mukherjee,78,66,71,86,83,79,385,77.0,Very Good
+S083,Veer Mishra,80,67,75,80,45,71,338,67.6,Good
+S084,Prisha Rao,79,74,51,75,64,75,339,67.8,Good
+S085,Myra Varma,99,100,94,85,90,92,461,92.2,Excellent
+S086,Zara Rao,95,82,76,82,94,87,421,84.2,Excellent
+S087,Sara Varma,83,69,85,59,75,76,364,72.8,Very Good
+S088,Arjun Trivedi,69,72,62,59,64,81,338,67.6,Good
+S089,Diya Rao,99,91,81,93,100,97,462,92.4,Excellent
+S090,Shaurya Dubey,55,44,41,51,66,53,255,51.0,Average
+S091,Aanya Mittal,79,65,63,71,62,61,322,64.4,Good
+S092,Advait Dubey,61,69,62,46,59,64,300,60.0,Good
+S093,Anvi Anand,63,63,46,64,63,61,297,59.4,Average
+S094,Dhruv Chatterjee,78,45,50,55,87,87,324,64.8,Good
+S095,Myra Jain,55,58,45,56,62,63,284,56.8,Average
+S096,Anvi Mishra,98,93,92,82,83,91,441,88.2,Excellent
+S097,Saanvi Gupta,62,50,76,41,61,59,287,57.4,Average
+S098,Advait Arora,78,76,63,80,51,61,331,66.2,Good
+S099,Veer Sinha,65,79,45,59,70,59,312,62.4,Good
+S100,Kiara Trivedi,71,69,61,83,71,69,353,70.6,Very Good

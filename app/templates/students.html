@@ -1,0 +1,170 @@
+{% extends "base.html" %}
+
+{% block title %}Students - Student Performance Predictor{% endblock %}
+
+{% block extra_css %}
+<style>
+    .table-hover tbody tr:hover {
+        background-color: rgba(78, 115, 223, 0.05);
+    }
+    
+    .performance-badge {
+        padding: 0.5rem 0.75rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+    }
+    
+    .performance-Excellent {
+        background-color: rgba(46, 204, 113, 0.2);
+        color: #27ae60;
+    }
+    
+    .performance-Very-Good {
+        background-color: rgba(52, 152, 219, 0.2);
+        color: #2980b9;
+    }
+    
+    .performance-Good {
+        background-color: rgba(241, 196, 15, 0.2);
+        color: #f39c12;
+    }
+    
+    .performance-Average {
+        background-color: rgba(230, 126, 34, 0.2);
+        color: #d35400;
+    }
+    
+    .performance-Below-Average {
+        background-color: rgba(231, 76, 60, 0.2);
+        color: #c0392b;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card shadow">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    <i class="fas fa-users me-2"></i>Student List
+                </h6>
+                <div class="d-flex">
+                    <div class="input-group">
+                        <input type="text" id="studentSearch" class="form-control" placeholder="Search student...">
+                        <button class="btn btn-primary" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive scrollable-table">
+                    <table class="table table-bordered table-hover" id="studentsTable">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Attendance</th>
+                                <th>Engineering Maths 3</th>
+                                <th>Microprocessor</th>
+                                <th>PPL</th>
+                                <th>Software Eng.</th>
+                                <th>DSA</th>
+                                <th>Total</th>
+                                <th>Percentage</th>
+                                <th>Performance</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for student in students %}
+                            <tr>
+                                <td>{{ student.Student_ID }}</td>
+                                <td>{{ student.Name }}</td>
+                                <td>{{ student.Attendance_Percentage }}%</td>
+                                <td>{{ student.Engineering_Maths_3_Marks }}</td>
+                                <td>{{ student.Microprocessor_Marks }}</td>
+                                <td>{{ student.Principles_of_Programming_Language_Marks }}</td>
+                                <td>{{ student.Software_Engineering_Marks }}</td>
+                                <td>{{ student.Data_Structure_and_Algorithm_Marks }}</td>
+                                <td>{{ student.Total_Marks }}</td>
+                                <td>{{ student.Percentage|round(2) }}%</td>
+                                <td>
+                                    <span class="performance-badge performance-{{ student.Performance|replace(' ', '-') }}">
+                                        {{ student.Performance }}
+                                    </span>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="mt-4">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Performance Summary</h5>
+                            <div class="d-flex flex-wrap mt-3">
+                                <div class="me-4 mb-3">
+                                    <span class="performance-badge performance-Excellent">Excellent</span>
+                                    <span class="ms-2">{{ performance_counts.Excellent }}</span>
+                                </div>
+                                <div class="me-4 mb-3">
+                                    <span class="performance-badge performance-Very-Good">Very Good</span>
+                                    <span class="ms-2">{{ performance_counts['Very Good'] }}</span>
+                                </div>
+                                <div class="me-4 mb-3">
+                                    <span class="performance-badge performance-Good">Good</span>
+                                    <span class="ms-2">{{ performance_counts.Good }}</span>
+                                </div>
+                                <div class="me-4 mb-3">
+                                    <span class="performance-badge performance-Average">Average</span>
+                                    <span class="ms-2">{{ performance_counts.Average }}</span>
+                                </div>
+                                <div class="me-4 mb-3">
+                                    <span class="performance-badge performance-Below-Average">Below Average</span>
+                                    <span class="ms-2">{{ performance_counts['Below Average'] }}</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Highest Performers</h5>
+                            <ul class="list-group mt-3">
+                                {% for student in top_performers %}
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    {{ student.Name }}
+                                    <span class="badge bg-primary rounded-pill">{{ student.Percentage|round(2) }}%</span>
+                                </li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Search functionality
+    document.getElementById('studentSearch').addEventListener('keyup', function() {
+        const searchText = this.value.toLowerCase();
+        const table = document.getElementById('studentsTable');
+        const rows = table.getElementsByTagName('tr');
+        
+        for (let i = 1; i < rows.length; i++) {
+            const nameCell = rows[i].getElementsByTagName('td')[1];
+            if (nameCell) {
+                const name = nameCell.textContent || nameCell.innerText;
+                if (name.toLowerCase().indexOf(searchText) > -1) {
+                    rows[i].style.display = '';
+                } else {
+                    rows[i].style.display = 'none';
+                }
+            }
+        }
+    });
+</script>
+{% endblock %} 

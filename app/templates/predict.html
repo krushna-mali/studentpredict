@@ -1,0 +1,263 @@
+{% extends "base.html" %}
+
+{% block title %}Predict Performance - Student Performance Predictor{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    <i class="fas fa-chart-line me-2"></i>Predict Student Performance
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="row mb-4">
+                    <div class="col-md-12">
+                        <p class="lead">Enter student details to predict their academic performance.</p>
+                    </div>
+                </div>
+
+                <form method="post" action="/predict">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group mb-3">
+                                <label for="student_name" class="form-label">Student Name</label>
+                                <input type="text" class="form-control" id="student_name" name="student_name" placeholder="Enter student name" required>
+                            </div>
+                            
+                            <div class="form-group mb-3">
+                                <label for="attendance" class="form-label">Attendance Percentage</label>
+                                <input type="number" class="form-control" id="attendance" name="attendance" min="0" max="100" placeholder="Enter attendance percentage" required>
+                                <div class="form-text">Enter attendance percentage (0-100)</div>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="engineering_maths" class="form-label">Engineering Maths 3 Marks</label>
+                                <input type="number" class="form-control" id="engineering_maths" name="engineering_maths" min="0" max="100" placeholder="Enter marks out of 100" required>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="microprocessor" class="form-label">Microprocessor Marks</label>
+                                <input type="number" class="form-control" id="microprocessor" name="microprocessor" min="0" max="100" placeholder="Enter marks out of 100" required>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6 mb-4">
+                            <div class="form-group mb-3">
+                                <label for="programming" class="form-label">Principles of Programming Language Marks</label>
+                                <input type="number" class="form-control" id="programming" name="programming" min="0" max="100" placeholder="Enter marks out of 100" required>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="software_engineering" class="form-label">Software Engineering Marks</label>
+                                <input type="number" class="form-control" id="software_engineering" name="software_engineering" min="0" max="100" placeholder="Enter marks out of 100" required>
+                            </div>
+
+                            <div class="form-group mb-3">
+                                <label for="dsa" class="form-label">Data Structure and Algorithm Marks</label>
+                                <input type="number" class="form-control" id="dsa" name="dsa" min="0" max="100" placeholder="Enter marks out of 100" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-chart-line me-2"></i>Predict Performance
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% if prediction %}
+    <div class="col-12 mt-4">
+        <div class="card shadow result-card">
+            <div class="card-header py-3 bg-primary text-white">
+                <h6 class="m-0 font-weight-bold">
+                    <i class="fas fa-chart-pie me-2"></i>Prediction Results
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <h4 class="mb-3">{{ student_name }}</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>Attendance</th>
+                                    <td>{{ attendance }}%</td>
+                                </tr>
+                                <tr>
+                                    <th>Total Marks</th>
+                                    <td>{{ total_marks }} / 500</td>
+                                </tr>
+                                <tr>
+                                    <th>Percentage</th>
+                                    <td>{{ percentage }}%</td>
+                                </tr>
+                                <tr class="table-primary">
+                                    <th>Predicted Performance</th>
+                                    <td><strong>{{ prediction.predicted_performance }}</strong></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <h5 class="mb-3">Subject Marks</h5>
+                        <canvas id="marksChart" width="400" height="300"></canvas>
+                    </div>
+                </div>
+
+                <div class="row mt-4">
+                    <div class="col-md-6">
+                        <h5 class="mb-3">Performance Probability</h5>
+                        <canvas id="probabilityChart" width="400" height="200"></canvas>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="card bg-light">
+                            <div class="card-body">
+                                <h5 class="card-title mb-3">
+                                    <i class="fas fa-lightbulb text-warning me-2"></i>Improvement Suggestions
+                                </h5>
+                                <ul class="list-group list-group-flush">
+                                    {% if attendance < 75 %}
+                                    <li class="list-group-item bg-transparent">
+                                        <i class="fas fa-exclamation-triangle text-warning me-2"></i>
+                                        Improve attendance to at least 75% for better results
+                                    </li>
+                                    {% endif %}
+                                    
+                                    {% if lowest_subject %}
+                                    <li class="list-group-item bg-transparent">
+                                        <i class="fas fa-arrow-up text-primary me-2"></i>
+                                        Focus on improving <strong>{{ lowest_subject }}</strong> (your lowest scoring subject)
+                                    </li>
+                                    {% endif %}
+                                    
+                                    {% if prediction.predicted_performance != 'Excellent' %}
+                                    <li class="list-group-item bg-transparent">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        Aim for consistent performance across all subjects
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% if prediction %}
+<script>
+    // Marks chart
+    const marksCtx = document.getElementById('marksChart').getContext('2d');
+    const marksChart = new Chart(marksCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Engineering\nMaths 3', 'Microprocessor', 'Programming\nLanguage', 'Software\nEngineering', 'DSA'],
+            datasets: [{
+                label: 'Marks (out of 100)',
+                data: [
+                    {{ engineering_maths }}, 
+                    {{ microprocessor }}, 
+                    {{ programming }}, 
+                    {{ software_engineering }}, 
+                    {{ dsa }}
+                ],
+                backgroundColor: [
+                    'rgba(54, 162, 235, 0.7)',
+                    'rgba(255, 99, 132, 0.7)',
+                    'rgba(255, 206, 86, 0.7)',
+                    'rgba(75, 192, 192, 0.7)',
+                    'rgba(153, 102, 255, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    max: 100
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false
+                }
+            }
+        }
+    });
+
+    // Probability chart
+    const probCtx = document.getElementById('probabilityChart').getContext('2d');
+    const probChart = new Chart(probCtx, {
+        type: 'doughnut',
+        data: {
+            labels: [
+                {% for label, prob in prediction.probabilities.items() %}
+                '{{ label }}',
+                {% endfor %}
+            ],
+            datasets: [{
+                data: [
+                    {% for label, prob in prediction.probabilities.items() %}
+                    {{ prob }},
+                    {% endfor %}
+                ],
+                backgroundColor: [
+                    'rgba(46, 204, 113, 0.7)',
+                    'rgba(52, 152, 219, 0.7)',
+                    'rgba(241, 196, 15, 0.7)',
+                    'rgba(230, 126, 34, 0.7)',
+                    'rgba(231, 76, 60, 0.7)'
+                ],
+                borderColor: [
+                    'rgba(46, 204, 113, 1)',
+                    'rgba(52, 152, 219, 1)',
+                    'rgba(241, 196, 15, 1)',
+                    'rgba(230, 126, 34, 1)',
+                    'rgba(231, 76, 60, 1)'
+                ],
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'right'
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            const label = context.label || '';
+                            const value = context.raw;
+                            const percentage = Math.round(value * 100);
+                            return `${label}: ${percentage}%`;
+                        }
+                    }
+                }
+            }
+        }
+    });
+</script>
+{% endif %}
+{% endblock %} 

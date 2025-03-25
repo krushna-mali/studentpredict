@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Student Performance Predictor{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3 d-flex justify-content-between align-items-center">
+                <h6 class="m-0 font-weight-bold text-primary">
+                    <i class="fas fa-graduation-cap me-2"></i>Welcome to Student Performance Predictor
+                </h6>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h2 class="mb-4">Student Performance Prediction System</h2>
+                        <p class="lead">This system uses machine learning to predict student performance based on their attendance and academic marks.</p>
+                        
+                        <div class="mt-4">
+                            <h5><i class="fas fa-check-circle text-success me-2"></i>Key Features</h5>
+                            <ul class="list-group list-group-flush mb-4">
+                                <li class="list-group-item bg-transparent"><i class="fas fa-chart-line text-primary me-2"></i>Predict student performance based on academic data</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-chart-bar text-primary me-2"></i>Visualize performance metrics across different subjects</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-users text-primary me-2"></i>View and analyze student data</li>
+                                <li class="list-group-item bg-transparent"><i class="fas fa-tachometer-alt text-primary me-2"></i>Interactive dashboard with insights</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="d-flex gap-3 mt-4">
+                            <a href="/predict" class="btn btn-primary btn-lg">
+                                <i class="fas fa-chart-line me-2"></i>Predict Performance
+                            </a>
+                            <a href="/dashboard" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-tachometer-alt me-2"></i>View Dashboard
+                            </a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mt-4 mt-md-0">
+                        <div class="card bg-light border-0">
+                            <div class="card-body text-center p-5">
+                                <img src="https://img.freepik.com/free-vector/college-university-students-group-young-happy-people-standing-isolated-white-background_575670-66.jpg" 
+                                     alt="Students" class="img-fluid rounded mb-4" style="max-height: 300px;">
+                                <h5 class="mb-3">Subjects Analyzed</h5>
+                                <div class="d-flex flex-wrap justify-content-center gap-2">
+                                    <span class="badge bg-primary p-2 mb-2">Engineering Maths 3</span>
+                                    <span class="badge bg-success p-2 mb-2">Microprocessor</span>
+                                    <span class="badge bg-info p-2 mb-2">Principles of Programming Language</span>
+                                    <span class="badge bg-warning p-2 mb-2">Software Engineering</span>
+                                    <span class="badge bg-danger p-2 mb-2">Data Structure and Algorithm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-12">
+        <div class="row">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Total Students</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ student_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-users fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Average Attendance</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ avg_attendance }}%</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-info shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Average Percentage</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ avg_percentage }}%</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-percentage fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card border-left-warning shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="row no-gutters align-items-center">
+                            <div class="col mr-2">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                    Excellent Performers</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ excellent_count }}</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="fas fa-award fa-2x text-gray-300"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
